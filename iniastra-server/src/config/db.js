@@ -10,15 +10,15 @@ const connectDB = async () => {
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
 
     mongoose.connection.on('connected', () => {
-      console.log('🟢 Mongoose connected');
+      console.log(' Mongoose connected');
     });
 
     mongoose.connection.on('error', (err) => {
-      console.error('🔴 Mongoose error:', err);
+      console.error(' Mongoose error:', err);
     });
 
     mongoose.connection.on('disconnected', () => {
-      console.log('🟡 Mongoose disconnected');
+      console.log(' Mongoose disconnected');
     });
 
     process.on('SIGINT', async () => {
@@ -28,7 +28,7 @@ const connectDB = async () => {
     });
 
   } catch (error) {
-    console.error('❌ MongoDB Connection Error:', error.message);
+    console.error(' MongoDB Connection Error:', error.message);
     process.exit(1);
   }
 };

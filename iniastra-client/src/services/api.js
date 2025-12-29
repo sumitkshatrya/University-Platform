@@ -1,12 +1,21 @@
 import axios from "axios";
 
-const API = "http://localhost:8000/api";
+const API =
+  window.location.hostname === "localhost"
+    ? "http://localhost:8000/api"
+    : "https://university-platform-ecg1.onrender.com/api";
+
+const api = axios.create({
+  baseURL: API,
+});
 
 export const fetchUniversities = (params) =>
-  axios.get(`${API}/universities`, { params });
+  api.get("/universities", { params });
 
 export const fetchApplications = (params) =>
-  axios.get(`${API}/applications`, { params });
+  api.get("/applications", { params });
 
 export const applyUniversity = (data) =>
-  axios.post(`${API}/applications`, data);
+  api.post("/applications", data);
+
+export default api;
